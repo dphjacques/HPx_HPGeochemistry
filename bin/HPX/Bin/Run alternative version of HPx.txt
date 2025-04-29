@@ -1,0 +1,11 @@
+To use this version of HP1, the official version of HYDRUS-GUI should be installed.
+Next, there are following options:
+
+(1) replace or add the files in the HYDRUS installation folder (maybe take first a backup of the original files)
+(2) copy the complete installation folder and replace and add the files in the copied folder (the original HYDRUS can still be exectued as previously, the GUI of the altered version can be started from the copied folder)
+(3) place the files anywhere else and rung the project from outside the GUI (a path.dat file should be defined).
+
+Only up to 20 components can be defined with the GUI. Component 21-40 should be defined via manipulation of the SELECTOR.IN and SPECIES.IN file.
+
+
+  
