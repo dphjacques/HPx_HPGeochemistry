@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <style name="Comment" color="Red" fontStyle="Italic" />
+  <style name="Number" color="Purple" />
+  <style name="Text" color="Brown" fontStyle="Italic" />
+  <style name="Level1" color="DarkBlue" fontStyle="Bold" />
+  <style name="Level2" color="DodgerBlue" />
+  <style name="Level3" color="DeepSkyBlue" />
+  <style name="Level4" fontStyle="Bold" />
+
+ 
+  <rule style="Comment">#.*</rule>
+  <rule style="Comment">'.*</rule>
+  
+  <rule style="Text">("([^"]|"")*")</rule>
+  <rule style="Number">\b[0-9]*\b|\b[0-9]*\.[0-9]*\b</rule>
+  <rule style="Number">\b[0-9]*\.[0-9]*(E-)[0-9]*\b|\b[0-9]*\.[0-9]*(E)[0-9]*\b|\b[0-9]*\.[0-9]*(e-)[0-9]*\b|\b[0-9]*\.[0-9]*(e)[0-9]*\b</rule>
+  <rule style="Number">\b[0-9]*[0-9]*(E-)[0-9]*\b|\b[0-9]*[0-9]*(E)[0-9]*\b|\b[0-9]*[0-9]*(e-)[0-9]*\b|\b[0-9]*[0-9]*(e)[0-9]*\b</rule>
+
+  <rule style="Level1">VERSION AND FILE INFORMATION</rule>
+  <rule style="Level1">Reading data base</rule>
+  <rule style="Level1">Reading input for water flow and solute transport</rule>
+  <rule style="Level1">Overview Model</rule>
+  <rule style="Level1">Reading input data for simulation</rule>
+  <rule style="Level1">Initial geochemical transport calculations</rule>
+  <rule style="Level1">Starting transport calculations</rule>
+
+  <rule style="Level2">Beginning of initial .*</rule>
+  <rule style="Level2">Beginning of batch-reaction calculations.*</rule>
+
+  <rule style="Level3">Initial solution.*</rule>
+  <rule style="Level3">Gas_Phase  \s*.</rule>
+  <rule style="Level3">Reaction step.*</rule>
+  <rule style="Level3">Exchange \s*.</rule>
+
+  <rule style="Level4">-*Exchange composition-*</rule>
+  <rule style="Level4">-*Surface composition-*</rule>
+  <rule style="Level4">-*Phase assemblage-*</rule>
+  <rule style="Level4">-*Solid solutions-*</rule>
+  <rule style="Level4">-*Gas phase-*</rule>
+  <rule style="Level4">-*User print-*</rule>
+  <rule style="Level4">-*Redox couples-*</rule>
+  <rule style="Level4">-*Solution composition-*</rule>
+  <rule style="Level4">-*Description of solution-*</rule>
+  <rule style="Level4">-*Distribution of species-*</rule>
+  <rule style="Level4">-*Saturation indices-*</rule>
+
+
+  <folding start="Reading input data" finish="Reading input data" options="IgnoreCase"/>
+</doc>
