@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Default>
+	<Group>Phreeqc 3.7.2</Group>
+	<Name>phreeqc.dat</Name>
+	<HPG>
+		<UseDefault>true</UseDefault>
+	</HPG>
+	<HPI>
+		<UseDefault>true</UseDefault>
+		<UseDefaultGeneral>true</UseDefaultGeneral>
+	</HPI>
+</Default>
+<DatabaseGroups />

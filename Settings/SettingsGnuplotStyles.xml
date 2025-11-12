@@ -1,0 +1,102 @@
+<Styles>
+	<Terminals>
+		<Terminal ID="20231209T000000">pngcairo
+			<Font use="yes">Sans</Font>
+			<Fontscale use="yes">1.7</Fontscale>
+			<Linewidth use="yes">2</Linewidth>
+			<Pointscale use="yes">1.2</Pointscale>
+		</Terminal>
+	</Terminals>
+	<Cycles>
+		<Cycle ID="20231207T000000">Dash types
+			<Item level="1" ><DashType>1</DashType></Item>
+			<Item level="2" ><DashType>2</DashType></Item>
+			<Item level="3" ><DashType>3</DashType></Item>
+			<Item level="4" ><DashType>4</DashType></Item>
+			<Item level="5" ><DashType>5</DashType></Item>
+			<Default>no</Default>
+			<PlotStyle>lines</PlotStyle>
+		</Cycle>
+		<Cycle ID="20231207T000001">Symbols - Filled
+			<Item level="1" >Circle<PointType>7</PointType></Item>
+			<Item level="2" >Square<PointType>5</PointType></Item>
+			<Item level="3" >Triangle up<PointType>9</PointType></Item>
+			<Item level="4" >Diamond<PointType>13</PointType></Item>
+			<Item level="5" >Triangle down<PointType>11</PointType></Item>
+			<Item level="6" >Hexagon<PointType>15</PointType></Item>
+			<Default>no</Default>
+			<PlotStyle>linespoints</PlotStyle>
+		</Cycle>
+		<Cycle ID="20231207T000002">Symbols - Empty
+			<Item level="1" >Circle<PointType>6</PointType></Item>
+			<Item level="2" >Square<PointType>4</PointType></Item>
+			<Item level="3" >Triangle up<PointType>8</PointType></Item>
+			<Item level="4" >Diamond<PointType>12</PointType></Item>
+			<Item level="5" >Triangle down<PointType>10</PointType></Item>
+			<Item level="6" >Hexagon<PointType>14</PointType></Item>
+			<Default>yes</Default>
+			<PlotStyle>linespoints</PlotStyle>
+		</Cycle>
+	</Cycles>
+	<Lines>
+		<Generic>
+			<LineWidth>3</LineWidth>
+			<DashType>1</DashType>
+			<PointNumber>8</PointNumber>			
+			<PointSize>2</PointSize>
+			<Background>true</Background>
+		</Generic>		
+		<Style ID="20231205T000000">Qualitative - Set1
+			<Item><Color>#e41a1c</Color></Item>
+			<Item><Color>#377eb8</Color></Item>
+			<Item><Color>#4daf4a</Color></Item>
+			<Item><Color>#984ea3</Color></Item>
+			<Item><Color>#ff7f00</Color></Item>
+			<Item><Color>#ffff33</Color></Item>
+			<Item><Color>#a65628</Color></Item>
+			<Item><Color>#f781bf</Color></Item>	
+			<Item><Color>#999999</Color></Item>	
+			<Default>yes</Default>
+		</Style>
+		<Style ID="20231205T000001">Qualitative - Accent
+			<Item><Color>#7FC97F</Color></Item>
+			<Item><Color>#BEAED4</Color></Item>
+			<Item><Color>#FDC086</Color></Item>
+			<Item><Color>#FFFF99</Color></Item>
+			<Item><Color>#386CB0</Color></Item>
+			<Item><Color>#F0027F</Color></Item>
+			<Item><Color>#BF5B17</Color></Item>
+			<Item><Color>#666666</Color></Item>	
+		</Style>
+		<Style ID="20231205T000002">Qualitative - Dark2
+			<Item><Color>#1B9E77</Color></Item>
+			<Item><Color>#D95F02</Color></Item>
+			<Item><Color>#7570B3</Color></Item>
+			<Item><Color>#E7298A</Color></Item>
+			<Item><Color>#66A61E</Color></Item>
+			<Item><Color>#E6AB02</Color></Item>
+			<Item><Color>#A6761D</Color></Item>
+			<Item><Color>#666666</Color></Item>	
+		</Style>
+	</Lines>
+	<Arrows>
+		<Style ID="20231206T000001">Simple Head
+			<Filled>nofilled</Filled>
+			<Coordiante>screen</Coordiante>
+			<Length>0.03</Length>
+			<Angle>15</Angle>
+			<BackAngle></BackAngle>
+			<Fixed>false</Fixed>
+			<Location>front</Location>
+		</Style>
+		<Style ID="20231206T000002">Filled Triangle Head
+			<Filled>nofilled</Filled>
+			<Coordiante>screen</Coordiante>
+			<Length>0.03</Length>
+			<Angle>15</Angle>
+			<BackAngle></BackAngle>
+			<Fixed>false</Fixed>
+			<Location>front</Location>
+		</Style>
+	</Arrows>
+</Styles>
