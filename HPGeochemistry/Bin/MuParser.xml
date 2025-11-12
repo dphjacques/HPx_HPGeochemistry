@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <style name="Text" color="Brown" fontStyle="Italic" />  
+  <style name="Function" color="GrayText"  fontStyle="Italic"/>
+  <style name="Number" color="Purple" />
+  <style name="Inline" color="Orange" fontStyle="Italic" />
+  
+  <rule style="Inline">@\S*\b</rule>
+  <rule style="Inline"><![CDATA[@\<.*\>]]></rule>
+  <rule style="Inline"><![CDATA[@%.*%\<.*\>]]></rule>
+  
+  <rule style="Function" options="IgnoreCase,Multiline">(\b)((float)|(int)|abs|sin|cos|tan|sinh|cosh|tanh|ln|log|log10)\b</rule>
+  <rule style="Function" options="IgnoreCase,Multiline">(\b)(exp|sqrt|min|max|sum|str2dbl|strlen|toupper|real|imag|conj|arg|norm|sizeof|eye|one|zeros)\b</rule>
+
+  <rule style="Text">("([^"]|"")*")</rule>
+  <rule style="Number">\b[0-9]*\b|\b[0-9]*\.[0-9]*\b</rule>
+  <rule style="Number">\b[0-9]*\.[0-9]*(E-)[0-9]*\b|\b[0-9]*\.[0-9]*(E)[0-9]*\b|\b[0-9]*\.[0-9]*(e-)[0-9]*\b|\b[0-9]*\.[0-9]*(e)[0-9]*\b</rule>
+  <rule style="Number">\b[0-9]*[0-9]*(E-)[0-9]*\b|\b[0-9]*[0-9]*(E)[0-9]*\b|\b[0-9]*[0-9]*(e-)[0-9]*\b|\b[0-9]*[0-9]*(e)[0-9]*\b</rule>
+
+  </doc>
