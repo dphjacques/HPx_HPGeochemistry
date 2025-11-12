@@ -1,0 +1,221 @@
+<MetaData>
+<Module>__s__Rates</Module>
+<Group>Mineral kinetics</Group>
+<Name>Palandri and Kharake equation - Zhang et al (2019) implementation</Name>
+<Information>
+<File>__s__Rates_GeoChemSim.rtf</File>
+</Information>
+<Reference>Zhang, Y., B. Hu, Y. Teng, K. Tu and C. Zhu (2019). "A library of BASIC scripts of reaction rates for geochemical modeling using phreeqc." Computers & Geosciences 133: 104316.
+</Reference>
+</MetaData	>
+<Template>
+	<Language>MyBasic</Language>
+	<Definitions>
+		<Definition>
+			<Name>Mineral</Name>
+			<Default>:String:Name of mineral:</Default>
+			<Info></Info>
+			<Statement> mineral = @</Statement>
+		</Definition>
+	</Definitions>
+	<PreScript>
+		_cR=8.31451 		
+		sr_mineral = SR(mineral)
+		MolarMass=gfw(phase_formula$(mineral))
+	</PreScript>
+	<Factors>
+		<Factor>
+			<Name>PreFactor</Name>
+			<Eq>_fpreFactor</Eq>
+			<Parameters>
+				<Parameter>_pPreFactor<Unit>-</Unit><Info>Additional factor</Info></Parameter>
+			</Parameters>
+			<Statement>_fpreFactor = _pPreFactor</Statement>
+		</Factor>
+		<Factor>
+			<Name>SSA</Name>
+			<Info>
+			</Info>
+			<Options>
+				<Option>
+					<Name>none</Name>
+					<Eq>_fNone</Eq>
+					<Statement>_fNone = 1.0</Statement>
+				</Option>
+				<Option>
+					<Name>constant</Name>
+					<Eq>_fSSA</Eq>
+					<Parameters>
+						<Parameter>_pSSA<Unit>m2/g</Unit><Info>Reactive surface area</Info></Parameter>
+					</Parameters>
+					<Statement>_fSSA = _pSSA*m0()*MolarMass</Statement>
+				</Option>				
+				<Option>
+					<Name>Two-Third</Name>
+					<Eq>_fSSA</Eq>
+					<Parameters>
+						<Parameter>_pSSA<Unit>m2/g</Unit><Info>Initial reactive surface area</Info></Parameter>
+					</Parameters>
+					<Statement>
+					cSSA = _pSSA*m0()*MolarMass
+					_fSSA = cSSA * (m()/m0())^0.67</Statement>
+				</Option>
+			</Options>
+			<Eq>_fSSA</Eq>
+			<Parameters>
+				<Parameter>_pSSA<Unit>m2/g</Unit><Info>Initial reactive surface area</Info></Parameter>
+			</Parameters>
+			<Statement>
+				cSSA = _pSSA*m0()*MolarMass
+				_fSSA = cSSA * (m()/m0())^0.67</Statement>
+			<Selected>true</Selected>
+		</Factor>
+		<Factor>
+			<Name>Mechanism</Name>
+			<Info></Info>
+			<Selected>true</Selected>
+			<Terms>
+				<Term>
+					<Name>Acid</Name>
+					<Info></Info>
+					<Eq>_fRate1</Eq>
+					<Parameters>
+						<Parameter>_pa1<Unit>1/m2/s</Unit><Info>Arrhenius pre-exponential term for the acid term</Info></Parameter>						
+						<Parameter>_pE1<Unit>j/kg</Unit><Info>Apparent reaction activation energy for the acid term</Info></Parameter>					
+						<Parameter>_pn1<Unit>-</Unit><Info>Reaction order of H+</Info></Parameter>					
+					</Parameters>
+					<Statement>
+						tfact = exp((-_pE1 /_cR) * ((1 / TK()) - (1 / 298.15)))
+						_fRate1=_pa1*tfact*ACT("H+")^_pn1
+					</Statement>
+					<Selected>true</Selected>					
+				</Term>				
+				<Term>
+					<Name>Neutral</Name>
+					<Info></Info>
+					<Eq>_fRate2</Eq>
+					<Parameters>
+						<Parameter>_pa2<Unit>1/m2/s</Unit><Info>Arrhenius pre-exponential term for the neutral term</Info></Parameter>						
+						<Parameter>_pE2<Unit>j/kg</Unit><Info>Apparent reaction activation energy for the neutral term</Info></Parameter>					
+					</Parameters>
+					<Statement>					
+						tfact = exp((-_pE2 /_cR) * ((1 / TK()) - (1 / 298.15)))
+						_fRate2=_pa2*tfact
+					</Statement>	
+					<Selected>true</Selected>					
+				</Term>				
+				<Term>
+					<Name>Base</Name>
+					<Info></Info>					
+					<Options>		
+						<Option>
+							<Name>H+</Name>
+							<Eq>_fRate3</Eq>
+							<Parameters>
+								<Parameter>_pa3<Unit>1/m2/s</Unit><Info>Arrhenius pre-exponential term for the base term</Info></Parameter>						
+								<Parameter>_pE3<Unit>j/kg</Unit><Info>Apparent reaction activation energy for the base term</Info></Parameter>					
+								<Parameter>_pn2<Unit>-</Unit><Info>Reaction order of H+</Info></Parameter>	
+							</Parameters>
+							<Statement>
+							tfact = exp((-_pE3 /_cR) * ((1 / TK()) - (1 / 298.15)))
+							_fRate3=_pa3*tfact*ACT("H+")^_pn2</Statement>
+						</Option>
+						<Option>
+							<Name>OH-</Name>
+							<Eq>_fRate3</Eq>
+							<Parameters>
+								<Parameter>_pa3<Unit>1/m2/s</Unit><Info>Arrhenius pre-exponential term for the base term</Info></Parameter>						
+								<Parameter>_pE3<Unit>j/kg</Unit><Info>Apparent reaction activation energy for the base term</Info></Parameter>					
+								<Parameter>_pn2<Unit>-</Unit><Info>Reaction order of OH-</Info></Parameter>	
+							</Parameters>
+							<Statement>
+							tfact = exp((-_pE3 /_cR) * ((1 / TK()) - (1 / 298.15)))
+							_fRate3=_pa3*tfact*ACT("OH-")^_pn2</Statement>
+						</Option>
+					</Options>
+					<Selected>true</Selected>
+					<Eq>_fRate3</Eq>
+					<Parameters>
+						<Parameter>_pa3<Unit>1/m2/s</Unit><Info>Arrhenius pre-exponential term for the base term</Info></Parameter>						
+						<Parameter>_pE3<Unit>j/kg</Unit><Info>Apparent reaction activation energy for the base term</Info></Parameter>					
+						<Parameter>_pn2<Unit>-</Unit><Info>Reaction order of H+</Info></Parameter>
+					</Parameters>
+					<Statement>
+						tfact = exp((-_pE3 /_cR) * ((1 / TK()) - (1 / 298.15)))
+						_fRate3=_pa3*tfact*ACT("H+")^_pn2
+					</Statement>
+				</Term>
+			</Terms>
+		</Factor>
+		<Factor>
+			<Name>TST</Name>
+			<Info>
+			</Info>
+			<Options>
+				<Option>
+					<Name>none</Name>
+					<Eq>_fTST</Eq>
+					<Statement>_fTST = 1.0</Statement>
+				</Option>
+				<Option>
+					<Name>eta and theta = 1</Name>
+					<Eq>_fTST</Eq>
+					<Statement>_fTST = (1-sr_mineral)</Statement>
+				</Option>				
+				<Option>
+					<Name>eta and theta variable</Name>
+					<Eq>_fTST</Eq>
+					<Parameters>
+						<Parameter>_pEta<Unit>-</Unit><Info>Empirical coefficient of TST - exponent of TST factor </Info></Parameter>
+						<Parameter>_pTheta<Unit>-</Unit><Info>Empirical coefficient of TST - exponent of saturation ratio</Info></Parameter>
+					</Parameters>
+					<Statement>
+					_fTST = (1-sr_mineral^pTheta)^_pEta</Statement>
+				</Option>
+			</Options>
+			<Selected>true</Selected>
+			<Eq>_fTST</Eq>
+			<Parameters>
+			</Parameters>
+			<Statement>_fTST = (1-sr_mineral)</Statement>
+
+		</Factor>
+	</Factors>
+</Template>
+// rate = _FSSA*(_fRate1+_fRate2+_fRate3)*_fTST
+
+<Rates>
+	<Rate>
+		<Name>albite</Name>
+		<Phase></Phase>
+		<Definitions>
+			<Definition><Name>Mineral</Name><Value>albite</Value></Definition>
+		</Definitions>
+		<Factors>
+			<Factor><Name>SSA</Name><Option>Two-Third</Option></Factor>
+			<Factor><Name>Mechanism</Name>
+				<Term>Acid</Term>
+				<Term><Name>Base</Name><Option>OH-</Option></Term>
+				<Term>Neutral</Term>
+			</Factor>
+			<Factor><Name>TST</Name><Option>eta and theta = 1</Option></Factor>
+		</Factors>
+		<Parameters>
+			<Record>
+				<Name>Default</Name>
+				<Info>Marty et al. 2015</Info>
+				</Parameter Name="_pPreFactor" Value="1.0"  Unit="">
+				</Parameter Name="_pSSA" Value="1.0"  Unit="m2/g">
+				</Parameter Name="_pa1" Value="8.5E-11"  Unit="">
+				</Parameter Name="_pE1" Value="58400"  Unit="">
+				</Parameter Name="_pn1" Value="0.335"  Unit="">
+				</Parameter Name="_pa2" Value="5.1E-20"  Unit="">
+				</Parameter Name="_pE2" Value="57000"  Unit="">
+				</Parameter Name="_pa3" Value="1.4E-10"  Unit="">
+				</Parameter Name="_pE3" Value="55500"  Unit="">
+				</Parameter Name="_pn2" Value="0.317"  Unit="">
+			</Record>
+		</Parameters>
+	</Rate>
+
+</Rates>
