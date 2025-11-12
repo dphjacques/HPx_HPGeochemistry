@@ -1,6 +1,7 @@
 <StandAlone>
-	<HPSettings folder="absolute">C:\Users\djacques\OneDrive - Studiecentrum voor Kernenergie\Documents\PC-Progress\HYDRUS 5.x\Settings</HPSettings>
+	<HPSettings folder="relative">..\..\Settings</HPSettings>
 	<HPData folder="relative">..\..\Data</HPData>
 	<HPInstall folder="relative">..</HPInstall>
 </StandAlone>
+
 
