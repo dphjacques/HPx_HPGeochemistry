@@ -1,5 +1,5 @@
 <StandAlone>
 	<HPSettings folder="absolute">C:\Users\djacques\OneDrive - Studiecentrum voor Kernenergie\Documents\PC-Progress\HYDRUS 5.x\Settings</HPSettings>
 	<HPData folder="absolute">C:\Users\djacques\OneDrive - Studiecentrum voor Kernenergie\Documents\PC-Progress\HYDRUS 5.x</HPData>
-	<HPInstall>D:\PC-Progress\HYDRUS 5.01 64-bit_new</HPInstall>
+	<HPInstall folder="relative">..</HPInstall>
 </StandAlone>
