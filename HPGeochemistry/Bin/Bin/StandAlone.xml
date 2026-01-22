@@ -1,7 +1,8 @@
 <StandAlone>
 	<HPSettings folder="relative">..\..\Settings</HPSettings>
 	<HPData folder="relative">..\..\Data</HPData>
-	<HPInstall folder="relative">..</HPInstall>
+	<HPInstall folder="relative">..</HPInstall>	
+	<HPProjects folder="relative">..\..\Projects</HPProjects>
 </StandAlone>
 
 
