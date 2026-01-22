@@ -11,5 +11,9 @@ If you update HPGeochemistry, you will need to overwrite the folders "Bin" and "
 
 Do not overwrite the files in "HPGeochemistry/Settings", otherwise you will delete information on your own settings and project information.
 
-**Current Version**
+Executable in HPGeochemistry/Bin/Bin 
+Name Executable: HPGeochemsistry.exe
 
+**Current Version** 
+HPx-3.03.006 using PHREEQC-3.8.2
+GUI version 3.03/005
