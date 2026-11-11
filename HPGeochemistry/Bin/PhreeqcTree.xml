@@ -4884,7 +4884,34 @@
 					<prefixd> sys("</prefixd>
 					<return>false</return>
 					<space>false</space>
-					<listname>AqueousComponents</listname>
+					<listname>AqueousComponents</listname>	
+				</list>
+			</subtype>
+			<subtype item="SYSmulti">
+				<![CDATA[sys("","","","","","")]]><tooltip>Multiple arguments: Return the moles of an element in all phases</tooltip>
+				<print><![CDATA[sys("<:str:component>","<:str:count">,<:str:"names">,<:str:"types">,<:str:"moles">)]]></print>
+				<autocomplete>Script</autocomplete>
+				<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/sys.html</LocalHelpUrl>
+				<Software>HPx</Software>
+				<list>
+					<postix>","count","names","types","moles") </postix>
+					<postixp>","count","names","types","moles") </postixp>
+					<postixd>","count","names","types","moles") </postixd>
+					<prefix> sys("</prefix>
+					<prefixp> sys("</prefixp>
+					<prefixd> sys("</prefixd>
+					<return>false</return>
+					<space>false</space>
+					<listname>AqueousComponents</listname>	
+					<item>elements</item>
+					<item>phases</item>
+					<item>aq</item>
+					<item>equi</item>
+					<item>ex</item>
+					<item>kin</item>
+					<item>surf</item>
+					<item>s_s</item>
+					<item>gas</item>
 				</list>
 			</subtype>
 			<subtype item="s_s">
@@ -4961,6 +4988,25 @@
 			</type>
 			<type>Global Definitions<printtype>none</printtype>
 			</type>
+			<subtype item="clear_def()">
+	  clear_def()<tooltip>Remove all records in a data block</tooltip>
+				<print><![CDATA[clear_def(<str::datablockname>)]]></print>
+				<autocomplete>Script</autocomplete>
+				<return>false</return>
+				<list>
+					<postix>")</postix>
+					<postixp>")</postixp>
+					<postixd>")</postixd>
+					<prefix>clear_def("</prefix>
+					<prefixp>clear_def("</prefixp>
+					<prefixd>clear_def("</prefixd>
+					<return>false</return>
+					<space>false</space>
+					<listnamespecial>
+					DataBlock
+					</listnamespecial>
+				</list>>
+			</subtype>
 			<subtype item="get_def()">
 	  get_def()<tooltip>Returns a specific entry from a data block</tooltip>
 				<print><![CDATA[get_def(<:str::datablockname>,<:int:colnr>,<:int:rownr>)]]></print>
@@ -4969,12 +5015,12 @@
 				<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/get_def.html</LocalHelpUrl>
 				<Software>HPx</Software>
 				<list>
-					<postix>,</postix>
-					<postixp>,</postixp>
-					<postixd>,</postixd>
-					<prefix>get_def(</prefix>
-					<prefixp>get_def(</prefixp>
-					<prefixd>get_def(</prefixd>
+					<postix>",</postix>
+					<postixp>",</postixp>
+					<postixd>",</postixd>
+					<prefix>get_def("</prefix>
+					<prefixp>get_def("</prefixp>
+					<prefixd>get_def("</prefixd>
 					<return>false</return>
 					<space>false</space>
 					<listnamespecial>
@@ -5143,6 +5189,59 @@
 					</listnamespecial>
 				</list>
 			</subtype>
+			<subtype item="push_def()_atend">
+	  push_def() at end<tooltip>Add a record with one or more elements</tooltip>
+				<print><![CDATA[push_def(<str::datablockname>,...)]]></print>
+				<autocomplete>Script</autocomplete>
+				<return>false</return>
+				<list>
+					<postix>",...)</postix>
+					<postixp>",...)</postixp>
+					<postixd>",...)</postixd>
+					<prefix>push_def("</prefix>
+					<prefixp>push_def("</prefixp>
+					<prefixd>push_def("</prefixd>
+					<return>false</return>
+					<space>false</space>
+					<listnamespecial>
+					DataBlock
+					</listnamespecial>
+				</list>>
+			</subtype>
+			
+			<subtype item="push_def()_addel">
+				push_def() at record<tooltip>Add one or more elements to a specific (labelled) record</tooltip>
+				<print><![CDATA[push_def(<str::datablockname>),"addel",<str::recordlabel>,<value...>)]]></print>
+				<autocomplete>Script</autocomplete>
+				<return>false</return>
+				<list>
+					<postix>","addel",</postix>
+					<postixp>","addel",</postixp>
+					<postixd>","addel",</postixd>
+					<prefix>push_def("</prefix>
+					<prefixp>push_def("</prefixp>
+					<prefixd>push_def("</prefixd>
+					<return>false</return>
+					<space>false</space>
+					<listnamespecial>
+					DataBlock						
+						<list>
+            Records<alternativetext>Record</alternativetext>
+							<printtype>notext</printtype>
+							<postix>",...)</postix>
+							<postixp>",...)</postixp>
+							<postixd>",...)</postixd>
+							<prefix>"</prefix>
+							<prefixp>"</prefixp>
+							<prefixd>"</prefixd>
+							<return>false</return>
+							<space>false</space>
+						</list>
+					</listnamespecial>
+
+				</list>>
+			</subtype>
+			
 		</Item>
 		<!--thermo-->
 		<Item item="Species and Phases">
@@ -5363,6 +5462,7 @@
 			</type>
 			<type>String functions<printtype>none</printtype>
 			</type>
+			<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/Stringmaniuplationfunctions.html</LocalHelpUrl>
 			<subtype item="chr">
 				<![CDATA[chr()]]><tooltip>Get the character of an ASCII code</tooltip>
 				<print><![CDATA[chr(<:int:code>)]]></print>
@@ -5452,6 +5552,7 @@
 			<subtype item="compare">
 				<![CDATA[string.compare("","")]]><tooltip>Compare to strings. Returns zero if identical.</tooltip>
 				<print><![CDATA[string.compare(<:str:string1>,<:str:string2>)]]></print>
+				<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/stringcompare.html</LocalHelpUrl>
 				<autocomplete>Script</autocomplete>
 				<return>false</return>
 				<space>true</space>
@@ -5459,6 +5560,7 @@
 			<subtype item="comparenocase">
 				<![CDATA[string.comparenocase("","")]]><tooltip>Compare to strings - case insensitive. Returns zero if identical.</tooltip>
 				<print><![CDATA[string.comparenocase(<:str:string1>,<:str:string2>)]]></print>
+				<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/stringcomparenocase.html</LocalHelpUrl>
 				<autocomplete>Script</autocomplete>
 				<return>false</return>
 				<space>true</space>
@@ -5475,6 +5577,15 @@
 			<subtype item="format">
 				<![CDATA[string.format("","")]]><tooltip>Format of a string following C-language format specifiers (single argument).</tooltip>
 				<print><![CDATA[string.format(<:str:format string>,<:str:string>)]]></print>
+				<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/stringformat.html</LocalHelpUrl>
+				<autocomplete>Script</autocomplete>
+				<return>false</return>
+				<space>true</space>
+			</subtype>
+			<subtype item="format">
+				<![CDATA[string.strtoint("")]]><tooltip>Convert string to integer.</tooltip>
+				<print><![CDATA[string.strtoint(<:str:string>)]]></print>
+				<LocalHelpUrl>https://dphjacques.github.io/HPx-Documentation/stringstrtoint.html</LocalHelpUrl>
 				<autocomplete>Script</autocomplete>
 				<return>false</return>
 				<space>true</space>

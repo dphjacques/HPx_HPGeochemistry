@@ -59,7 +59,7 @@
   <rule style="Identifier" options="IgnoreCase,Multiline">(;\s*|^\s*)(-openmp|-headings|-plot_titles|-plot_units|-initial|chem_m|chem_im|-integralsum|-totalsum)\s</rule>
   <rule style="Identifier" options="IgnoreCase,Multiline">(;\s*|^\s*)(-user_print|-geochemistry|-neumann,-delimiter)\s</rule>
   <rule style="Identifier" options="IgnoreCase,Multiline">\b(p|parallel|threads|t|orchestra|_null_|table|tab|comma|true|false)(;|\s|\n)</rule>
-  <rule style="Identifier" options="IgnoreCase,Multiline">\b(default|definition|initial|update|tortuositywater|tortw);?\s</rule>
+  <rule style="Identifier" options="IgnoreCase,Multiline">\b(default|definition|initial|update|tortuositywater|tortw|final);?\s</rule>
   
  
   <rule style="Identifier" options="IgnoreCase,Multiline">(;\s*|^\s*)(-origin|-rowid|-transport)\s</rule>
@@ -81,7 +81,7 @@
 
   <?global variables?>
   <rule style="Function" options="IgnoreCase,Multiline">(\b)(getval|get_node|get_nodeexist|get_varexist|get_var|put_def|putval|put_def|put_node|put_var|save)\b</rule>
-  <rule style="Function" options="IgnoreCase,Multiline">(\b)(get_def|get_deflabel|get_defnrrec|get_defexist|calc_arg|get_orch|push_def)\b</rule>
+  <rule style="Function" options="IgnoreCase,Multiline">(\b)(get_def|get_deflabel|get_defnrrec|get_defexist|calc_arg|get_orch|push_def|clear_def)\b</rule>
 
 <?species and phases?>
   <rule style="Function" options="IgnoreCase,Multiline">(\b)(gfw|phase_vm|lk_species|lk_phase|phase_formula|species_formula)\b</rule>
@@ -95,12 +95,14 @@
 
   <?output?>
   <rule style="Function" options="IgnoreCase,Multiline">\b(punch|write|writes)\b</rule>
-  <rule style="Function" options="IgnoreCase,Multiline">\b(openf|writef|closef|deletef)\b</rule>
+  
+  <?system?>
+  <rule style="Function" options="IgnoreCase,Multiline">\b(openf|writef|closef|deletef|copyf|cmd)\b</rule>
   
   <?strings?>
   <rule style="Function" options="IgnoreCase,Multiline">\b(chr|eol|str|strf|tab|left|rigth|mid|val|len)\b</rule>
   <rule style="Function" options="IgnoreCase,Multiline">\b(string).</rule>
-  <rule style="Function" options="IgnoreCase,Multiline">\b(string.comparenocase|string.find|string.compare|string.format|string.trim)\b</rule>
+  <rule style="Function" options="IgnoreCase,Multiline">\b(string.comparenocase|string.find|string.compare|string.format|string.trim|string.strtoint)\b</rule>
 
   <?boost?>
   <rule style="Function" options="IgnoreCase,Multiline">\b(boost).</rule>
@@ -132,4 +134,5 @@
   <folding start="&#35;&#123;" finish="&#35;&#125;" options="IgnoreCase"/>
   <folding start="-start" finish="-end" options="IgnoreCase"/>
   <folding start="if" finish="endif" options="IgnoreCase"/>
+  <folding start="def" finish="enddef" options="IgnoreCase"/>
 </doc>
