@@ -15,5 +15,5 @@ Executable in HPGeochemistry/Bin/Bin
 Name Executable: HPGeochemsistry.exe
 
 **Current Version** 
-HPx-3.03.006 using PHREEQC-3.8.2
-GUI version 3.03/005
+HPx-3.03.006 using PHREEQC-3.9.0
+GUI version 1.07
